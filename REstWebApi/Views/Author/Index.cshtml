@@ -1,0 +1,37 @@
+﻿@using Data.Entities
+@model List<Authors>
+@{
+    ViewData["Title"] = "Авторы";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Привет, друг</h1>
+    <table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Фамилия</th>
+      <th>Имя</th>
+      <th>Отчество</th>
+      <th>Книги</th>
+      <th><a class="nav-link"  asp-controller="Author" asp-action="Create" >Создать автора</a>  </th>
+    </tr>
+  </thead>
+  <tbody>
+      @for(int i = 1; i <= @Model.Count; i++)
+            {
+                <tr>
+                    <th scope="row">@i </th>
+                      <td>@Model[i-1].LastName</td>
+                      <td>@Model[i-1].FirstName</td>
+                      <td>@Model[i-1].MiddleName</td>
+                      <td>@Model[i-1].AuthorsBooks.Count шт.</td>
+                      <td><a class="nav-link"  asp-controller="Author" asp-action="Details" asp-route-id = "@Model[i-1].Id">Подробнее</a>  
+                          <a class="nav-link"  asp-controller="Author" asp-action="Edit" asp-route-id = "@Model[i-1].Id">Изменить</a>  
+                          <a class="nav-link"  asp-controller="Author" asp-action="Delete" asp-route-id = "@Model[i-1].Id" >Удалить</a> 
+                        </td>
+                </tr>
+            }
+  </tbody>
+</table>
+</div>

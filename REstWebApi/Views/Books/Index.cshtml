@@ -1,0 +1,31 @@
+﻿@using Data.Entities
+@model List<Books>
+@{
+    ViewData["Title"] = "Книги";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Тут будут книги</h1>
+      <table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Название</th>
+      <th>Стоимость</th>
+      <th>Авторы</th>
+    </tr>
+  </thead>
+  <tbody>
+      @for(int i = 1; i <= @Model.Count; i++)
+            {
+                <tr>
+                    <th scope="row">@i </th>
+                      <td>@Model[i-1].Name</td>
+                      <td>@Model[i-1].Cost</td>
+                      <td>пока пусто</td>
+                </tr>
+            }
+  </tbody>
+</table>
+
+</div>
